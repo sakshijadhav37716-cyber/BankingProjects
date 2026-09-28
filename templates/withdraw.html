@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Withdraw - MyBank</title>
+</head>
+
+<body>
+
+<h1>💸 Withdraw Money</h1>
+
+<h3>Account Information</h3>
+
+<p>
+    Current Balance:
+    <strong>₹{{ account.balance }}</strong>
+</p>
+
+<p>
+    Minimum Balance:
+    <strong>₹{{ account.minimum_balance }}</strong>
+</p>
+
+<p>
+    Maximum Withdrawal Limit:
+    <strong>₹{{ account.withdraw_limit }}</strong>
+</p>
+
+<hr>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Enter Amount:</label>
+    <br>
+
+    <input
+        type="number"
+        name="amount"
+        min="1"
+        step="0.01"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Withdraw Money
+    </button>
+
+</form>
+
+<br>
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        <p>{{ message }}</p>
+
+    {% endfor %}
+
+{% endif %}
+
+<a href="/dashboard/">
+    ← Back to Dashboard
+</a>
+
+</body>
+
+</html>

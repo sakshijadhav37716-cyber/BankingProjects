@@ -1,0 +1,25 @@
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Account Number:</label><br>
+    <input type="text" name="account_number" required>
+    <br><br>
+
+    <label>Username:</label><br>
+    <input type="text" name="username" required>
+    <br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required>
+    <br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required>
+    <br><br>
+
+    <label>Monthly Salary:</label><br>
+<input type="number" name="salary" min="0" step="0.01" required>
+<br><br>
+
+    <button type="submit">Register</button>
+</form>

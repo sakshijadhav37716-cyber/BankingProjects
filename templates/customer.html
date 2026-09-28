@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Customer Service - MyBank</title>
+</head>
+
+<body>
+
+<h1>📞 Customer Service</h1>
+
+<p>
+    How can we help you?
+</p>
+
+<hr>
+
+<h2>Submit a Request</h2>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Subject:</label>
+    <br>
+
+    <input
+        type="text"
+        name="subject"
+        required
+    >
+
+    <br><br>
+
+    <label>Your Message:</label>
+    <br>
+
+    <textarea
+        name="message"
+        rows="6"
+        cols="50"
+        required
+    ></textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Submit Request
+    </button>
+
+</form>
+
+<hr>
+
+<h2>My Previous Requests</h2>
+
+{% if requests %}
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Status</th>
+        <th>Date</th>
+    </tr>
+
+    {% for request in requests %}
+
+    <tr>
+        <td>{{ request.subject }}</td>
+
+        <td>{{ request.message }}</td>
+
+        <td>{{ request.status }}</td>
+
+        <td>{{ request.created_at }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No customer service requests yet.</p>
+
+{% endif %}
+
+<br>
+
+<a href="/dashboard/">
+    ← Back to Dashboard
+</a>
+
+</body>
+
+</html>

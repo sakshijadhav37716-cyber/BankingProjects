@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Selection - MyBank</title>
+</head>
+
+<body>
+
+    <h1>🏦 Loan Selection</h1>
+
+    <p>
+        Your Monthly Salary:
+        <strong>₹{{ account.salary }}</strong>
+    </p>
+
+    <hr>
+
+    <h2>Select Loan</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Loan Type:</label>
+        <br>
+
+        <select name="loan_type" required>
+
+            <option value="">-- Select Loan --</option>
+
+            <option value="Home">🏠 Home Loan</option>
+
+            <option value="Car">🚗 Car Loan</option>
+
+            <option value="Gold">🪙 Gold Loan</option>
+
+            <option value="Personal">👤 Personal Loan</option>
+
+        </select>
+
+        <br><br>
+
+        <label>Loan Amount:</label>
+        <br>
+
+        <input
+            type="number"
+            name="amount"
+            min="1"
+            step="0.01"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Check Eligibility
+        </button>
+
+    </form>
+
+    <hr>
+
+    {% if result %}
+
+        <h2>Result</h2>
+
+        <p>
+            {{ result }}
+        </p>
+
+    {% endif %}
+
+    <hr>
+
+    <h2>Loan Conditions</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Loan Type</th>
+            <th>Minimum Salary</th>
+            <th>Maximum Loan Amount</th>
+        </tr>
+
+        <tr>
+            <td>Home Loan</td>
+            <td>₹30,000</td>
+            <td>₹50,00,000</td>
+        </tr>
+
+        <tr>
+            <td>Car Loan</td>
+            <td>₹25,000</td>
+            <td>₹15,00,000</td>
+        </tr>
+
+        <tr>
+            <td>Gold Loan</td>
+            <td>₹15,000</td>
+            <td>₹5,00,000</td>
+        </tr>
+
+        <tr>
+            <td>Personal Loan</td>
+            <td>₹20,000</td>
+            <td>₹10,00,000</td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a href="/dashboard/">
+        ← Back to Dashboard
+    </a>
+
+</body>
+</html>
